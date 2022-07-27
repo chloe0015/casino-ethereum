@@ -1,0 +1,289 @@
+{
+	"compiler": {
+		"version": "0.4.26+commit.4563c3fc"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "generateNumberWinner",
+				"outputs": [],
+				"payable": true,
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "LIMIT_AMOUNT_BETS",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "myid",
+						"type": "bytes32"
+					},
+					{
+						"name": "result",
+						"type": "string"
+					}
+				],
+				"name": "__callback",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "numberOfBets",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_queryId",
+						"type": "bytes32"
+					},
+					{
+						"name": "_result",
+						"type": "string"
+					},
+					{
+						"name": "_proof",
+						"type": "bytes"
+					}
+				],
+				"name": "__callback",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "player",
+						"type": "address"
+					}
+				],
+				"name": "checkPlayerExists",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "numberToBet",
+						"type": "uint256"
+					}
+				],
+				"name": "bet",
+				"outputs": [],
+				"payable": true,
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "distributePrizes",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "numberWinner",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "minimumBet",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "maxAmountOfBets",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "players",
+				"outputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "totalBet",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"name": "_minimumBet",
+						"type": "uint256"
+					},
+					{
+						"name": "_maxAmountOfBets",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			}
+		],
+		"devdoc": {
+			"author": "Merunas Grincalaitis",
+			"methods": {
+				"__callback(bytes32,string,bytes)": {
+					"params": {
+						"_proof": "A string with a proof code to verify the authenticity of the number generation",
+						"_queryId": "The query id that was generated to proofVerify",
+						"_result": "String that contains the number generated"
+					}
+				},
+				"bet(uint256)": {
+					"params": {
+						"numberToBet": "The number that the player wants to bet for. Must be between 1 and 10 both inclusive"
+					}
+				},
+				"checkPlayerExists(address)": {
+					"params": {
+						"player": "The address of the player to check"
+					},
+					"return": "bool Returns true is it exists or false if it doesn't"
+				}
+			},
+			"title": "Contract to bet Ether for a number and win randomly when the number of bets is met."
+		},
+		"userdoc": {
+			"methods": {
+				"__callback(bytes32,string,bytes)": {
+					"notice": "Callback function that gets called by oraclize when the random number is generated"
+				},
+				"bet(uint256)": {
+					"notice": "To bet for a number by sending Ether"
+				},
+				"checkPlayerExists(address)": {
+					"notice": "Check if a player exists in the current game"
+				},
+				"distributePrizes()": {
+					"notice": "Sends the corresponding Ether to each winner then deletes all the players for the next game and resets the `totalBet` and `numberOfBets`"
+				},
+				"generateNumberWinner()": {
+					"notice": "Generates a random number between 1 and 10 both inclusive. Must be payable because oraclize needs gas to generate a random number. Can only be executed when the game ends."
+				}
+			}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Users/zhangziyan/casino-ethereum/contracts/Casino.sol": "Casino"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Users/zhangziyan/casino-ethereum/contracts/Casino.sol": {
+			"keccak256": "0xc554fa0e8c702cb62d86c76cbe709eb29eee36e30087e3bb4b546b53f268a91d",
+			"urls": [
+				"bzzr://28972ec0e81c1ebde726c561e2900990d5ed51c56978b86a1cf3cdedd7080298"
+			]
+		},
+		"Users/zhangziyan/casino-ethereum/contracts/oraclizeAPI_0.4.sol": {
+			"keccak256": "0x6589821692b1571fb828c7b5063d8b2e0cd8b1382ae6088aae2c9d74e3555b92",
+			"urls": [
+				"bzzr://07c40cff8ceb40c66d8a81eb50aec845ec6413f55081b8e8f1223516fe2fa119"
+			]
+		}
+	},
+	"version": 1
+}
